@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4185c78-c766-4c14-9ba8-10288ad832f6" name="Changes" comment="second commit">
-      <change afterPath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/performance.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/static/blog/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/static/blog/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/addtrade.html" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/addtrade.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/tradebook.html" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/tradebook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +161,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722320076380</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="second commit">
+      <option name="closed" value="true" />
+      <created>1723464009701</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723464009701</updated>
+    </task>
+    <task id="LOCAL-00005" summary="second commit">
+      <option name="closed" value="true" />
+      <created>1723464076332</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723464076332</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
