@@ -150,3 +150,6 @@ def performance(request):
         'win_rate': win_rate,
         'max_drawdown': max_drawdown_percentage
     })
+
+
+# asdfg

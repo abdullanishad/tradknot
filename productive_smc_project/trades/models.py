@@ -40,7 +40,6 @@ class TradeDetails(models.Model):
         self.pnl = self.calculate_pnl()
         super().save(*args, **kwargs)
 
-
     class Meta:
         ordering = ['-trade_datetime']
 
