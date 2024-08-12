@@ -1,7 +1,8 @@
 {% extends 'trades/base.html' %}
 {% block content %}
 <!--sidebar starts here-->
-<div class="d-flex flex-column flex-shrink-0 text-white bg-dark sidebar" style="width: 250px; position:fixed; height: 88%;">
+<div class="d-flex flex-column flex-shrink-0 text-white bg-dark sidebar"
+     style="width: 250px; position:fixed; height: 88%;">
     <ul class="nav nav-pills flex-column mb-auto p-3">
         <li class="nav-item">
             <a href="{% url 'addtrade' %}" class="nav-link active" aria-current="page">
@@ -20,47 +21,14 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link text-white">
+            <a href="{% url 'performance' %}" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#table"></use>
                 </svg>
-                Trade Log
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#grid"></use>
-                </svg>
-                Reports
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#people-circle"></use>
-                </svg>
-                Notes
+                Performance
             </a>
         </li>
     </ul>
-    <hr>
-    <div class="dropdown p-3">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-           id="dropdownUser1"
-           data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>mdo</strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
-    </div>
 </div>
 
 <!--trade form starts here-->
@@ -165,14 +133,7 @@
                 </div>
             </div>
         </main>
-        <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-            <p class="mb-1">© 2024. Tradknot</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul>
-        </footer>
+
     </div>
 </div>
 

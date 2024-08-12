@@ -19,6 +19,7 @@ class TradeDetails(models.Model):
     entry_price = models.DecimalField(max_digits=10, decimal_places=2)
     exit_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     quantity = models.IntegerField()
+    pnl = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     trade_rationale = models.TextField(null=True, blank=True)
     outcome_analysis = models.TextField(null=True, blank=True)
     emotional_state = models.TextField(null=True, blank=True)
@@ -28,5 +29,18 @@ class TradeDetails(models.Model):
     def __str__(self):
         return f"{self.trade_datetime} - {self.trade_symbol} - {self.trade_type}"
 
+    def calculate_pnl(self):
+        if self.trade_type == 'Buy':
+            return (self.exit_price - self.entry_price) * self.quantity
+        elif self.trade_type == 'Sell':
+            return (self.entry_price - self.exit_price) * self.quantity
+        return 0
+
+    def save(self, *args, **kwargs):
+        self.pnl = self.calculate_pnl()
+        super().save(*args, **kwargs)
+
     class Meta:
         ordering = ['-trade_datetime']
+
+
