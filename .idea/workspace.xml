@@ -5,8 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4185c78-c766-4c14-9ba8-10288ad832f6" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/tradknot/trades/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tradknot/trades/templates/trades/addtrade.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tradknot/trades/templates/trades/confirm_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tradknot/trades/templates/trades/tradebook.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tradknot/trades/templates/trades/update_trade.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/productive_smc_project/trades/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/media/default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/media/default.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/media/profile_pics/default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/media/profile_pics/default.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/productive_smc_project/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/productive_smc_project/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/tradknot/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/productive_smc_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/tradknot/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/productive_smc_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/tradknot/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/productive_smc_project/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/tradknot/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/migrations/0002_tradedetails_delete_post.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/migrations/0002_tradedetails_delete_post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/migrations/0003_tradedetails_pnl.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/migrations/0003_tradedetails_pnl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/tradknot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/static/blog/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/static/blog/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/addtrade.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/templates/trades/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/templates/trades/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/performance.html" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/templates/trades/performance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/templates/trades/tradebook.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/trades/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/trades/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/templates/users/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/templates/users/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/templates/users/logout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/templates/users/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/templates/users/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productive_smc_project/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tradknot/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

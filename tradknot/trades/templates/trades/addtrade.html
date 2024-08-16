@@ -1,0 +1,60 @@
+{% extends 'trades/base.html' %}
+{% block content %}
+<!--sidebar starts here-->
+<div class="d-flex flex-column flex-shrink-0 text-white bg-dark sidebar"
+     style="width: 250px; position:fixed; height: 88%;">
+    <ul class="nav nav-pills flex-column mb-auto p-3">
+        <li class="nav-item">
+            <a href="{% url 'addtrade' %}" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home"></use>
+                </svg>
+                Add Trade
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'tradebook' %}" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#speedometer2"></use>
+                </svg>
+                Tradebook
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'performance' %}" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#table"></use>
+                </svg>
+                Performance
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--trade form starts here-->
+<div class="container-fluid p-4" style="margin-left: 250px;">
+    <div class="container mt-2">
+        <main>
+            <div class="row g-5">
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Add Trade Details</h4>
+
+                    {% load crispy_forms_tags %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Save changes</button>
+                    </form>
+
+                    <a class="btn btn-secondary mt-3" href="{% url 'tradebook' %}">Back to Trade List</a>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+</div>
+
+
+{% endblock %}

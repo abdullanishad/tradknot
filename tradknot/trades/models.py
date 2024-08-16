@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 class TradeDetails(models.Model):
@@ -17,7 +18,7 @@ class TradeDetails(models.Model):
     trade_symbol = models.CharField(max_length=10)
     trade_type = models.CharField(max_length=4, choices=TRADE_TYPE_CHOICES)
     entry_price = models.DecimalField(max_digits=10, decimal_places=2)
-    exit_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    exit_price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField()
     pnl = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     trade_rationale = models.TextField(null=True, blank=True)
@@ -39,6 +40,11 @@ class TradeDetails(models.Model):
     def save(self, *args, **kwargs):
         self.pnl = self.calculate_pnl()
         super().save(*args, **kwargs)
+
+    def clean(self):
+        # Ensure trade_datetime is not set to a future date and time
+        if self.trade_datetime > timezone.now():
+            raise ValidationError("Trade date and time cannot be in the future.")
 
     class Meta:
         ordering = ['-trade_datetime']
