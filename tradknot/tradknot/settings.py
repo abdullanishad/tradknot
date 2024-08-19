@@ -81,17 +81,27 @@ WSGI_APPLICATION = "tradknot.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'productive_smc_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'adgjmptw',
+#         'HOST': 'localhost', # or your database host
+#         'PORT': '5432', # or your database port
+#     }
+# }
+
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'productive_smc_db',
-        'USER': 'postgres',
+        'NAME': 'tradknotdb',
+        'USER': 'abdullanishad',
         'PASSWORD': 'adgjmptw',
-        'HOST': 'localhost', # or your database host
+        'HOST': 'tradknotdb.ctwuwe8uuclc.ap-south-1.rds.amazonaws.com', # or your database host
         'PORT': '5432', # or your database port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
