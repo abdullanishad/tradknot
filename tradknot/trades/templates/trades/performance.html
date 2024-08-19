@@ -1,0 +1,96 @@
+{% extends 'trades/base.html' %}
+{% block content %}
+<!--sidebar starts here-->
+<div class="d-flex">
+
+    <!--sidebar starts here-->
+    <div class="d-flex flex-column flex-shrink-0 text-white bg-dark sidebar"
+         style="width: 250px; position:fixed; height: 88%;">
+        <ul class="nav nav-pills flex-column mb-auto p-3">
+            <li class="nav-item">
+                <a href="{% url 'addtrade' %}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#home"></use>
+                    </svg>
+                    Add Trade
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'tradebook' %}" class="nav-link text-white" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2"></use>
+                    </svg>
+                    Tradebook
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'performance' %}" class="nav-link active">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    Performance
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--trade form starts here-->
+    <div class="container-fluid p-4" style="margin-left: 250px;">
+        <div class="container mt-2">
+
+            <main>
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <div class="col">
+                        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-body">Total Return:</h5>
+                                <p class="card-text">
+                                <h6>
+                                {{ total_sum }}
+
+                                </h6>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-body">Win/Loss Ratio:
+                                <p class="card-text">
+                                <h6>
+                                 {{ win_rate|floatformat:2 }}%
+
+                                </h6>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-body">Maximum Drawdown:
+                                <p class="card-text">
+                                <h6>
+                                 {{ max_drawdown|floatformat:2  }}
+                                </h6>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-body">Max DD percentage :
+                                <p class="card-text">
+                                <h6>
+                                   {{ max_dd_percentage|floatformat:2  }} %
+                                </h6>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
