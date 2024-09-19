@@ -39,6 +39,12 @@ class TradeListView(LoginRequiredMixin, ListView):
         return TradeDetails.objects.filter(user=self.request.user)
 
 
+class TradeDetailView(DetailView):
+    model = TradeDetails
+    template_name = 'trades/trade_detail.html'
+    context_object_name = 'trade'
+
+
 # trade update view class
 class TradeUpdateView(LoginRequiredMixin, UpdateView):
     model = TradeDetails

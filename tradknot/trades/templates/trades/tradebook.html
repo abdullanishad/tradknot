@@ -54,7 +54,7 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-<!--                                <th>tradeid</th>-->
+                                <!--                                <th>tradeid</th>-->
                                 <th>Date & Time</th>
                                 <th>Symbol</th>
                                 <th>Type</th>
@@ -62,18 +62,14 @@
                                 <th>Exit Price</th>
                                 <th>Quantity</th>
                                 <th>pnl</th>
-                                <th>Rationale</th>
-                                <th>Outcome</th>
-                                <th>Emotional State</th>
-                                <th>Lessons Learned</th>
-                                <th>Notes</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for trade in trades %}
-                            <tr>
-<!--                                <td>{{ trade.id }}</td>-->
+                            <tr class="trade-row" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                data-trade="{{ trade.trade_datetime }}|{{ trade.trade_symbol }}|{{ trade.trade_type }}|{{ trade.entry_price }}|{{ trade.exit_price }}|{{ trade.quantity }}|{{ trade.pnl }}|{{ trade.trade_rationale }}|{{ trade.outcome_analysis }}|{{ trade.emotional_state }}|{{ trade.lessons_learned }}|{{ trade.notes }}">
+                                <!--                                <td>{{ trade.id }}</td>-->
                                 <td>{{ trade.trade_datetime }}</td>
                                 <td>{{ trade.trade_symbol }}</td>
                                 <td>{{ trade.trade_type }}</td>
@@ -81,11 +77,6 @@
                                 <td>{{ trade.exit_price }}</td>
                                 <td>{{ trade.quantity }}</td>
                                 <td>{{ trade.pnl }}</td>
-                                <td>{{ trade.trade_rationale }}</td>
-                                <td>{{ trade.outcome_analysis }}</td>
-                                <td>{{ trade.emotional_state }}</td>
-                                <td>{{ trade.lessons_learned }}</td>
-                                <td>{{ trade.notes }}</td>
                                 <td>
                                     &nbsp;
                                     <a href="{% url 'update_trade' trade.pk %}">
@@ -97,7 +88,8 @@
                                         </svg>
                                     </a>
                                     &nbsp;
-                                    <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ trade.pk }}">
+                                    <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                       data-id="{{ trade.pk }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                             <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
@@ -145,6 +137,38 @@
         </div>
     </div>
 
+    <!--    modal to display the detailed information.-->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailModalLabel">Trade Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li><strong>Date & Time:</strong> <span id="tradeDateTime"></span></li>
+                        <li><strong>Symbol:</strong> <span id="tradeSymbol"></span></li>
+                        <li><strong>Type:</strong> <span id="tradeType"></span></li>
+                        <li><strong>Entry Price:</strong> <span id="entryPrice"></span></li>
+                        <li><strong>Exit Price:</strong> <span id="exitPrice"></span></li>
+                        <li><strong>Quantity:</strong> <span id="quantity"></span></li>
+                        <li><strong>PNL:</strong> <span id="pnl"></span></li>
+                        <li><strong>Rationale:</strong> <span id="rationale"></span></li>
+                        <li><strong>Outcome:</strong> <span id="outcome"></span></li>
+                        <li><strong>Emotional State:</strong> <span id="emotionalState"></span></li>
+                        <li><strong>Lessons Learned:</strong> <span id="lessonsLearned"></span></li>
+                        <li><strong>Notes:</strong> <span id="notes"></span></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 <script>
@@ -161,6 +185,31 @@
             document.getElementById('tradeId').value = tradeId; // Set trade ID in hidden field
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var detailModal = document.getElementById('detailModal');
+        var tradeRows = document.querySelectorAll('.trade-row');
+
+        tradeRows.forEach(function (row) {
+            row.addEventListener('click', function () {
+                var data = this.dataset.trade.split('|');
+
+                document.getElementById('tradeDateTime').textContent = data[0];
+                document.getElementById('tradeSymbol').textContent = data[1];
+                document.getElementById('tradeType').textContent = data[2];
+                document.getElementById('entryPrice').textContent = data[3];
+                document.getElementById('exitPrice').textContent = data[4];
+                document.getElementById('quantity').textContent = data[5];
+                document.getElementById('pnl').textContent = data[6];
+                document.getElementById('rationale').textContent = data[7];
+                document.getElementById('outcome').textContent = data[8];
+                document.getElementById('emotionalState').textContent = data[9];
+                document.getElementById('lessonsLearned').textContent = data[10];
+                document.getElementById('notes').textContent = data[11];
+            });
+        });
+    });
+
 </script>
 
 {% endblock %}

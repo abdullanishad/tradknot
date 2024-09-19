@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+
+.navbar-color {
+    background-color: #F1EFE7!important;
+}
+
+.league-spartan {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 40px; /* Adjust size as needed */
+    font-weight: 700; /* Adjust weight to make it thicker */
+
+}
+
+.sidebar {
+    width: 180px; /* Fixed width */
+    position: fixed;
+    height: 88%;
+    /* transition: all 0.3s ease;*/
+}
+.sidebar.collapsed {
+    margin-left: -250px; /* Hide sidebar when collapsed */
+}
+/* Ensure the main content takes full width on smaller screens when sidebar is hidden */
+.content {
+    margin-left: 250px; /* Space for the sidebar */
+}
+@media (max-width: 991.98px) {
+    .content {
+        margin-left: 0; /* No space for sidebar on small screens */
+    }
+}
+
