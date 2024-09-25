@@ -9,6 +9,9 @@ from django.db.models import Sum, DecimalField, Case, When, Count, F, Value, Int
 from django.contrib import messages
 from .forms import TradeDetailsForm  # Ensure you have a form defined for TradeDetails
 from django.views.generic.edit import View
+import csv
+from django.urls import reverse
+from django.utils.dateparse import parse_datetime
 
 
 # trade create view class
@@ -172,5 +175,125 @@ def performance(request):
         'win_rate': win_rate,
         'max_drawdown': max_drawdown,
         'max_dd_percentage': max_drawdown_percentage
+    })
+
+
+import pandas as pd
+from decimal import Decimal
+
+def upload_csv(request):
+    if request.method == 'POST':
+        csv_file = request.FILES.get('csv_file')
+
+        if not csv_file.name.endswith('.csv'):
+            return HttpResponse('File is not CSV format', status=400)
+
+        df = pd.read_csv(csv_file)
+
+        # Initialize list to store results
+        results = []
+
+        engaged_symbol = []
+
+        for index, row_x in df.iterrows():
+            if row_x['symbol'] in engaged_symbol:
+                continue
+
+            df_filt = df[df.symbol == row_x['symbol']]
+
+            unrealised_value = 0
+            unrealised_qty = 0
+            total_buy_value = 0
+            total_sell_value = 0
+            tot_buy_qty = 0
+            tot_sell_qty = 0
+
+            for _, row in df_filt.iterrows():
+                if row.trade_type == 'buy':
+                    tot_buy_qty += row.quantity
+                    unrealised_qty += row.quantity
+                    total_buy_value += row.quantity * row.price
+                    unrealised_value += row.quantity * row.price
+                else:
+                    tot_sell_qty += row.quantity
+                    unrealised_qty -= row.quantity
+                    total_sell_value += row.quantity * row.price
+                    unrealised_value -= row.quantity * row.price
+
+            # Skip processing if there's no buy or sell
+            if tot_buy_qty == 0 or tot_sell_qty == 0:
+                continue
+
+            realised_qty = max((tot_buy_qty + tot_sell_qty - abs(unrealised_qty)) / 2, 1)
+
+            buy_avg = round(total_buy_value / tot_buy_qty, 2)
+            sell_avg = round(total_sell_value / realised_qty, 2) if unrealised_qty <= 0 else round(
+                total_sell_value / tot_sell_qty, 2)
+
+            realised_pnl = (sell_avg - buy_avg) * realised_qty
+
+            # Append results to the list
+            results.append({
+                'order_execution_time': row_x.order_execution_time,
+                'symbol': row_x.symbol,
+                'type': row_x.trade_type,
+                'buy_avg': buy_avg,
+                'sell_avg': sell_avg,
+                'qty': realised_qty,
+                'realised_pnl': realised_pnl
+            })
+
+            engaged_symbol.append(row_x['symbol'])
+
+        # Create DataFrame from results
+        df_results = pd.DataFrame(results)
+
+
+        # decoded_file = df_results.read().decode('utf-8').splitlines()
+        # csv_reader = csv.reader(decoded_file)
+        #
+        # next(csv_reader)  # Skip the title row
+
+        for index, row in df_results.iterrows():
+            try:
+                # Extract necessary fields from CSV
+                trade_datetime = parse_datetime(row[0])
+                trade_symbol = row[1]
+                trade_type = row[2].capitalize()  # 'Buy' or 'Sell'
+                entry_price = Decimal(row[3])     # Convert to Decimal
+                exit_price = Decimal(row[4])     # Convert to Decimal
+                quantity = int(float(row[5]))
+
+                trade = TradeDetails(
+                    user=request.user,
+                    trade_datetime=trade_datetime,
+                    trade_symbol=trade_symbol,
+                    trade_type=trade_type,
+                    entry_price=entry_price,
+                    exit_price=exit_price,  # Exit price as Decimal
+                    quantity=quantity,
+                    source='CSV'
+                )
+                trade.save()
+
+
+            except Exception as e:
+                print(f"Error processing row: {row}, error: {e}")
+                continue
+
+        return redirect(reverse('tradebook'))
+
+    return redirect(reverse('addtrade'))
+
+
+
+def list_trades(request):
+    # Fetch trades based on source
+    manual_trades = TradeDetails.objects.filter(user=request.user, source='Manual')
+    csv_trades = TradeDetails.objects.filter(user=request.user, source='CSV')
+
+    return render(request, 'trade_list.html', {
+        'manual_trades': manual_trades,
+        'csv_trades': csv_trades,
     })
 

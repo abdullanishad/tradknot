@@ -30,7 +30,7 @@ body {
 }
 /* Ensure the main content takes full width on smaller screens when sidebar is hidden */
 .content {
-    margin-left: 250px; /* Space for the sidebar */
+    margin-left: 180px; /* Space for the sidebar */
 }
 @media (max-width: 991.98px) {
     .content {

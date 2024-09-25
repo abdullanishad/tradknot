@@ -35,6 +35,31 @@
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Add Trade Details</h4>
 
+                    <!-- Link to open modal -->
+                    <a href="#" class="btn btn-info mb-3" data-bs-toggle="modal" data-bs-target="#csvModal">Add a CSV File</a>
+
+                    <!-- Modal for CSV Upload -->
+                    <div class="modal fade" id="csvModal" tabindex="-1" aria-labelledby="csvModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="csvModalLabel">Upload CSV File</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" enctype="multipart/form-data" id="csvUploadForm" action="{% url 'upload_csv' %}">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="csv_file" class="form-label">Choose CSV File</label>
+                                            <input class="form-control" type="file" id="csv_file" name="csv_file" accept=".csv" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {% load crispy_forms_tags %}
 
                     <form method="post">

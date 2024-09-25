@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 
 class TradeDetails(models.Model):
+
     BUY = 'Buy'
     SELL = 'Sell'
     TRADE_TYPE_CHOICES = [
@@ -12,7 +13,13 @@ class TradeDetails(models.Model):
         (SELL, 'Sell'),
     ]
 
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    SOURCE_CHOICES = [
+        ('CSV', 'CSV'),
+        ('Manual', 'Manual'),
+    ]
+
+
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     trade_datetime = models.DateTimeField()
     trade_symbol = models.CharField(max_length=10)
@@ -26,6 +33,9 @@ class TradeDetails(models.Model):
     emotional_state = models.TextField(null=True, blank=True)
     lessons_learned = models.TextField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
+    source = models.CharField(max_length=10, choices=SOURCE_CHOICES, default='Manual')
+
+
 
     def __str__(self):
         return f"{self.trade_datetime} - {self.trade_symbol} - {self.trade_type}"
@@ -48,5 +58,3 @@ class TradeDetails(models.Model):
 
     class Meta:
         ordering = ['-trade_datetime']
-
-

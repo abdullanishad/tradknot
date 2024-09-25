@@ -54,7 +54,7 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <!--                                <th>tradeid</th>-->
+                                <!--<th>tradeid</th>-->
                                 <th>Date & Time</th>
                                 <th>Symbol</th>
                                 <th>Type</th>
@@ -69,7 +69,7 @@
                             {% for trade in trades %}
                             <tr class="trade-row" data-bs-toggle="modal" data-bs-target="#detailModal"
                                 data-trade="{{ trade.trade_datetime }}|{{ trade.trade_symbol }}|{{ trade.trade_type }}|{{ trade.entry_price }}|{{ trade.exit_price }}|{{ trade.quantity }}|{{ trade.pnl }}|{{ trade.trade_rationale }}|{{ trade.outcome_analysis }}|{{ trade.emotional_state }}|{{ trade.lessons_learned }}|{{ trade.notes }}">
-                                <!--                                <td>{{ trade.id }}</td>-->
+                                <!--<td>{{ trade.id }}</td>-->
                                 <td>{{ trade.trade_datetime }}</td>
                                 <td>{{ trade.trade_symbol }}</td>
                                 <td>{{ trade.trade_type }}</td>
